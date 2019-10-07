@@ -49,9 +49,8 @@ function handleTestStart() {
   //this function is declared when you push the start button, it deletes the start button and draws the first question
    console.log("Test started");
    removeElement("js-start-quiz");
-    $(".mosquito").html(generateQuestionElement(questions[questionCount]));
-     whenQuestionClicked();
-   let placeholder = questionCount + 1;
+   $(".mosquito").html(generateQuestionElement(questions[questionCount]));
+   let placeholder = 1
    $(".question-count").text("Question: " + placeholder);
 }
 
@@ -65,22 +64,26 @@ function generateQuestionElement(item){
   <div class = "question">${item[4].question}</div>
          <form>
             <button onclick="checkCorrect()" class="answers-top" id="1" type="button">${item[0].answer}</button>
-            <button class="answers-top" id="2" type="button">${item[1].answer}</button><br>
-            <button class="answers-bottom" id="3" type="button">${item[2].answer}</button>
-            <button class="answers-bottom" id="4" type="button">${item[3].answer}</button><br>
+            <button onclick="checkCorrect()" class="answers-top" id="2" type="button">${item[1].answer}</button><br>
+            <button onclick="checkCorrect()" class="answers-bottom" id="3" type="button">${item[2].answer}</button>
+            <button onclick="checkCorrect()" class="answers-bottom" id="4" type="button">${item[3].answer}</button><br>
         </form> 
   `
+}
+function generateScoreScreen(){
+    return `
+      <div class = "scoreScreen"> You got <span class = "correctCount"></span>/5 correct!</div>
+      <button onclick="restart()" class="restartButton" type ="button">Restart?</button>
+    `
+}
+function renderScoreScreen(){
+    console.log("Rendering score screen");
+    $(".mosquito").html(generateScoreScreen());
 }
 
 function renderQuestion(item){
   console.log("renderQuestion Ran");
   $(".mosquito").html(generateQuestionElement(item));
-  whenQuestionClicked();
-}
-
-function whenQuestionClicked(){
-
-
 }
 
 function correctAnswer(){
@@ -97,15 +100,44 @@ function wrongAnswer(){
 }
  
 function finalRender(){
-  questionCount ++;
-  renderQuestion(questions[questionCount]);
-  $(".question-count").text("Question: " + questionCount);
-}
+  if (questionCount == 4){
+    renderScoreScreen();
+    $(".correctCount").text(numberCorrect);
+  }
 
-function test(){
-  console.log("the click is working");
+  else{
+    questionCount ++;
+    let placeholder = questionCount + 1;
+    renderQuestion(questions[questionCount]);
+     $(".question-count").text("Question: " + placeholder);
+  }
 }
 
 function checkCorrect(){
-  console.log("button clicked");
+  console.log(questionCount);
+  let questionNumber = event.srcElement.id - 1;
+  console.log(questionNumber + " has been clicked");
+  if (questions[questionCount][questionNumber].isCorrect == true){
+    console.log(questions[questionCount][questionNumber].isCorrect);
+    correctAnswer();
+    finalRender();
+    }
+    else{
+      wrongAnswer();
+      finalRender();
+    }
+  }
+  
+    
+  
+
+
+function restart(){
+   questionCount = 0;
+   numberCorrect = 0;
+   numberWrong = 0;
+   renderQuestion(questions[questionCount]);
+   $(".question-count").text("Question: " + questionCount);
+   $(".correctCount").text(numberCorrect.toString());
+   $(".incorrectCount").text(numberWrong.toString());
 }
