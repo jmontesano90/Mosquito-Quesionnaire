@@ -1,13 +1,15 @@
 let questionCount = 0;
 let numberCorrect = 0;
 let numberWrong = 0;
+let isTrue = false;
 
 const question1 = [
-  {answer: "Egg->Grub->Adult", isCorrect: false},
-  {answer: "Egg->Larvae->Adult", isCorrect: false},
+  {answer: "Egg->Grub-><br>Adult", isCorrect: false},
+  {answer: "Egg->Larvae-><br>Adult", isCorrect: false},
   {answer: "Egg->Larvae-><br>Grub->Adult", isCorrect: false},
   {answer: "Egg->Larvae-><br>Pupae->Adult", isCorrect: true},
-  {question: "A mosquitoes life is broken up into which segments?"}
+  {question: "A mosquitoes life is broken up into which segments?"},
+  {explanation: "Mosquitoes go from eggs to larvae than pupae to adult.  This information is very important in terms of mosquito control, as most pesticides only work on one stage."}
 ];
 
 const question2 = [
@@ -15,7 +17,8 @@ const question2 = [
   {answer: "Salt Water", isCorrect: false},
   {answer: "Fresh and Salt Water", isCorrect: true},
   {answer: "The Ocean", isCorrect: false},
-  {question: "Mosquito Eggs are laid in:"}
+  {question: "Mosquito Eggs are laid in:"},
+  {explanation:"Depending on the species, mosquitoes can lay eggs in fresh water, salt water or a combination of both (brackish water).  They will not however, ever lay eggs in the ocean as the water is too turbulent."}
 ];
 
 const question3 = [
@@ -23,7 +26,8 @@ const question3 = [
   {answer: "Culex Pipiens", isCorrect: false},
   {answer: "Ixodes Scapularis", isCorrect: true},
   {answer: "Toxorhynchites", isCorrect: false},
-  {question: "Which of the following is NOT a mosquito?"}
+  {question: "Which of the following is NOT a mosquito?"},
+  {explanation: "All are mosquito species except Ixodes Scapularis, which is the Deer Tick, or Black Legged Tick."}
 ];
 
 const question4 = [
@@ -31,7 +35,8 @@ const question4 = [
   {answer: "Extra energy for the winter", isCorrect: false},
   {answer: "Nutrients to fly", isCorrect: false},
   {answer: "To be annoying", isCorrect: false},
-  {question: "Why do female mosquitoes suck blood?"}
+  {question: "Why do female mosquitoes suck blood?"},
+  {explanation: "Female mosquitoes suck blood to get extra protein for their eggs.  Male mosquitoes do not bite."}
 ];
 
 const question5 = [
@@ -39,7 +44,8 @@ const question5 = [
   {answer: "500 feet", isCorrect: false},
   {answer: "1-2 miles", isCorrect: false},
   {answer: "Up to 30 miles", isCorrect: true},
-  {question: "What is a mosquitoes max range?"}
+  {question: "What is a mosquitoes max range?"},
+  {explanation: "The range of a mosquito is highly dependent on the species, but many salt marsh mosquitoes can have a range of up to 30 miles.  Fresh water or container mosquitoes tend to be signifigantly smaller, at only several hundred feet."}
 ];
 
 const questions = [question1, question2,question3,question4,question5];
@@ -63,10 +69,10 @@ function generateQuestionElement(item){
   return `
   <div class = "question">${item[4].question}</div>
          <form>
-            <button onclick="checkCorrect()" class="answers-top" id="1" type="button">${item[0].answer}</button>
-            <button onclick="checkCorrect()" class="answers-top" id="2" type="button">${item[1].answer}</button><br>
-            <button onclick="checkCorrect()" class="answers-bottom" id="3" type="button">${item[2].answer}</button>
-            <button onclick="checkCorrect()" class="answers-bottom" id="4" type="button">${item[3].answer}</button><br>
+            <button onclick="checkCorrect()" class="answers" id="1" type="button">${item[0].answer}</button>
+            <button onclick="checkCorrect()" class="answers" id="2" type="button">${item[1].answer}</button><br>
+            <button onclick="checkCorrect()" class="answers" id="3" type="button">${item[2].answer}</button>
+            <button onclick="checkCorrect()" class="answers" id="4" type="button">${item[3].answer}</button><br>
         </form> 
   `
 }
@@ -76,9 +82,31 @@ function generateScoreScreen(){
       <button onclick="restart()" class="restartButton" type ="button">Restart?</button>
     `
 }
+
+function generateExplanationScreen(){
+  return `
+  <div class="rightOrWrong"></div>
+  <div class="explanation"></div>
+  <button onclick="finalRender()" class ="continueButton" type="button">Continue:</button>
+  `
+}
+
+function renderExplanationScreen(){
+  console.log("Rendering score screen");
+  $(".mosquito").html(generateExplanationScreen());
+  $(".explanation").text(questions[questionCount][5].explanation);
+  if (isTrue == true){
+    $(".rightOrWrong").text("Correct! ");
+  }
+  else {
+    $(".rightOrWrong").text("Incorrect: ");
+  }
+}
+
 function renderScoreScreen(){
     console.log("Rendering score screen");
     $(".mosquito").html(generateScoreScreen());
+    $(".question-count").text("Excellent work!");
 }
 
 function renderQuestion(item){
@@ -87,14 +115,14 @@ function renderQuestion(item){
 }
 
 function correctAnswer(){
-  alert("CONGRATULAIONS");
+  $("rightOrWrong").text("That is correct! ");
   console.log("Answer has been clicked");
   numberCorrect ++;
   $(".correctCount").text(numberCorrect.toString());
 }
 
 function wrongAnswer(){
-  alert("WRONG");
+  $("rightorWrong").text("Incorrect");
     numberWrong ++;
     $(".incorrectCount").text(numberWrong.toString());
 }
@@ -116,22 +144,19 @@ function finalRender(){
 function checkCorrect(){
   console.log(questionCount);
   let questionNumber = event.srcElement.id - 1;
+  isTrue = questions[questionCount][questionNumber].isCorrect;
   console.log(questionNumber + " has been clicked");
   if (questions[questionCount][questionNumber].isCorrect == true){
     console.log(questions[questionCount][questionNumber].isCorrect);
     correctAnswer();
-    finalRender();
+    renderExplanationScreen();
     }
     else{
       wrongAnswer();
-      finalRender();
+      renderExplanationScreen();
     }
   }
   
-    
-  
-
-
 function restart(){
    questionCount = 0;
    numberCorrect = 0;

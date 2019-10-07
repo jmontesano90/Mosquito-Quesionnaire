@@ -2,7 +2,7 @@ body{
     display:flex;
     flex-direction: column;
     text-align: center;
-    background-color:aquamarine;
+    background-color:rgb(178, 228, 213);
 }
 
 #js-start-quiz{
@@ -38,27 +38,23 @@ body{
 
 footer{
     position: absolute;
+    font-size:18px;
     top: 400px;
     right: 41%;
     border: double 2px black;
     border-radius: 3px;
-    background-color: cyan;
+    background-color: rgb(250, 250, 250);
 }
-.answers-top{
-    display:inline-block;
-    border: 2px black dotted;
-    background-color:bisque;
-    width: 42%;
-    height: 42%;
-    margin: 5px;
-}
-.answers-bottom{
+
+.answers{
+    font-size:18px;
     margin: 5px;
     display:inline-block;
-    border: 2px black dotted;
-    background-color:bisque;
-    width: 42%;
-    height: 42%;
+    border: 2px black double;
+    background-color:rgb(252, 244, 236);
+    width: 150px;
+    height: 80px;
+    word-wrap: break-word;
    
 }
 .answer-container{
@@ -72,7 +68,7 @@ footer{
 
 .question{
     margin: 2px;
-    border: 1px black solid;
+    border: 3px black dotted;
     border-right: hidden;
     border-left: hidden;
     background-color: bisque;
@@ -80,3 +76,34 @@ footer{
     margin-left: auto;
 }
 
+.correctCount{
+    color: rgb(0, 25, 250);
+}
+
+.incorrectCount{
+    color: red;
+}
+
+.restartButton{
+  position: relative;
+  top: 90px;
+  background-color: antiquewhite;
+  border: dotted, 2px, black;
+  font-size:14px;
+  text-align: center;
+  border-radius: 2px;
+  height: 40px;
+  width: 90px;
+}
+
+.scoreScreen{
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  top: 20%;
+  width: 120px;
+  font-size: 25px;
+  border: black 2px solid;
+  border-radius: 10px;
+  background-color:aliceblue;
+}
