@@ -2,40 +2,64 @@ body{
     display:flex;
     flex-direction: column;
     text-align: center;
+    background-color:aquamarine;
+}
+
+#js-start-quiz{
+  position: relative;
+  top: 40%;
+  background-color: antiquewhite;
+  border: dotted, 2px, black;
+  font-size:18px;
+  text-align: center;
+  border-radius: 2px;
+  height: 40px;
+  width: 90px;
 }
 
 .mosquito{
     /* display:flex; */
-    border: 1px black solid;
+    border: 2px black double;
+    background-color:aqua;
     margin-right: auto;
     margin-left: auto;
     height: 250px;
     width: 360px;
+    font-family: sans-serif;
     /* justify-content: center; */
 }
 
 .question-count{
     margin-top: 5px;
+    /* border: 1px solid black;
+    border-radius: 1px;
+    background-color:aqua; */
 }
 
 footer{
     position: absolute;
     top: 400px;
-    right: 41%
+    right: 41%;
+    border: double 2px black;
+    border-radius: 3px;
+    background-color: cyan;
 }
 .answers-top{
     display:inline-block;
-    border: 1px black solid;
-    width: 40%;
-    height: 40%;
+    border: 2px black dotted;
+    background-color:bisque;
+    width: 42%;
+    height: 42%;
     margin: 5px;
 }
 .answers-bottom{
     margin: 5px;
     display:inline-block;
-    border: 1px black solid;
-    width: 40%;
-    height: 40%;
+    border: 2px black dotted;
+    background-color:bisque;
+    width: 42%;
+    height: 42%;
+   
 }
 .answer-container{
     /* border: 1px black solid; */
@@ -49,6 +73,10 @@ footer{
 .question{
     margin: 2px;
     border: 1px black solid;
+    border-right: hidden;
+    border-left: hidden;
+    background-color: bisque;
     margin-right: auto;
     margin-left: auto;
 }
+
