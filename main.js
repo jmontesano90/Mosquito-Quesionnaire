@@ -4,10 +4,10 @@ let numberWrong = 0;
 let isTrue = false;
 
 const question1 = [
-  {answer: "Egg->Grub-><br>Adult", isCorrect: false},
-  {answer: "Egg->Larvae-><br>Adult", isCorrect: false},
-  {answer: "Egg->Larvae-><br>Grub->Adult", isCorrect: false},
-  {answer: "Egg->Larvae-><br>Pupae->Adult", isCorrect: true},
+  {answer: "Egg->Grub->Adult", isCorrect: false},
+  {answer: "Egg->Larvae->Adult", isCorrect: false},
+  {answer: "Egg->Larvae->Grub->Adult", isCorrect: false},
+  {answer: "Egg->Larvae->Pupae->Adult", isCorrect: true},
   {question: "A mosquitoes life is broken up into which segments?"},
   {explanation: "Mosquitoes go from eggs to larvae than pupae to adult.  This information is very important in terms of mosquito control, as most pesticides only work on one stage."}
 ];
@@ -69,10 +69,11 @@ function generateQuestionElement(item){
   return `
   <div class = "question">${item[4].question}</div>
          <form>
-            <button onclick="checkCorrect()" class="answers" id="1" type="button">${item[0].answer}</button>
-            <button onclick="checkCorrect()" class="answers" id="2" type="button">${item[1].answer}</button><br>
-            <button onclick="checkCorrect()" class="answers" id="3" type="button">${item[2].answer}</button>
-            <button onclick="checkCorrect()" class="answers" id="4" type="button">${item[3].answer}</button><br>
+            <input type="radio" required="required" class="answers" id="1" name = "answerSelection" type="button">${item[0].answer}</button><br>
+            <input type="radio" class="answers" id="2" name = "answerSelection" type="button">${item[1].answer}</button><br>
+            <input type="radio" class="answers" id="3" name = "answerSelection" type="button">${item[2].answer}</button><br>
+            <input type="radio" class="answers" id="4" name = "answerSelection" type="button">${item[3].answer}</button><br>
+            <input type="submit" value="submit" onclick="checkCorrect()">
         </form> 
   `
 }
@@ -143,7 +144,8 @@ function finalRender(){
 
 function checkCorrect(){
   console.log(questionCount);
-  let questionNumber = event.srcElement.id - 1;
+  let questionNumber = $('input[type=radio][name=answerSelection]:checked').attr('id') - 1;
+  console.log(questionNumber);
   isTrue = questions[questionCount][questionNumber].isCorrect;
   console.log(questionNumber + " has been clicked");
   if (questions[questionCount][questionNumber].isCorrect == true){
