@@ -2,38 +2,45 @@ body{
     display:flex;
     flex-direction: column;
     text-align: center;
-    background-color:rgb(178, 228, 213);
+    background-color:rgb(243, 250, 248);
+    
+}
+
+.introduction{
+    padding: 5px;
+    margin-top: 20px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #js-start-quiz{
   position: relative;
   top: 40%;
-  background-color: antiquewhite;
-  border: dotted, 2px, black;
-  font-size:18px;
+  background-color: rgb(95, 245, 76);
+  border: dotted, 2px, rgba(0, 0, 0, 0.301);
+  font-size:22px;
   text-align: center;
-  border-radius: 2px;
+  border-radius: 10px;
   height: 40px;
   width: 90px;
+  cursor: pointer;
 }
 
 .mosquito{
-    /* display:flex; */
     border: 2px black double;
-    background-color:aqua;
+    background-color:rgb(210, 255, 255);
     margin-right: auto;
     margin-left: auto;
     height: 250px;
     width: 360px;
     font-family: sans-serif;
-    /* justify-content: center; */
+    border-radius:4px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .question-count{
     margin-top: 5px;
-    /* border: 1px solid black;
-    border-radius: 1px;
-    background-color:aqua; */
 }
 
 footer{
@@ -52,13 +59,9 @@ footer{
     display:inline-block;
     border: 2px black double;
     background-color:rgb(252, 244, 236);
-    /* width: 150px;
-    height: 80px; */
     word-wrap: break-word;
-   
 }
 .answer-container{
-    /* border: 1px black solid; */
     margin-right: auto;
     margin-left: auto;
     height: 200px;
@@ -67,13 +70,49 @@ footer{
 }
 
 .question{
-    margin: 2px;
-    border: 3px black dotted;
+    margin: 5px;
+    padding:5px;
+    font-size: 20px;
+    border-bottom: 3px black dotted;
     border-right: hidden;
     border-left: hidden;
-    background-color: bisque;
     margin-right: auto;
     margin-left: auto;
+}
+
+.questionButton{
+    background-color: rgb(95, 245, 76);
+    border: dotted, 2px, rgba(0, 0, 0, 0.301);
+    font-size:22px;
+    text-align: center;
+    border-radius: 10px;
+    height: 40px;
+    width: 90px;
+    cursor: pointer;
+    /* position: relative;
+    bottom: 0px; */
+}
+
+.continueButton{
+    background-color: rgb(95, 245, 76);
+    border: dotted, 2px, rgba(0, 0, 0, 0.301);
+    font-size:22px;
+    text-align: center;
+    border-radius: 10px;
+    height: 40px;
+    width: 110px;
+    cursor: pointer;
+}
+
+.correct{
+    color: rgb(0, 25, 250);
+    font-size: 26px;
+    border-bottom: 1px black dotted;
+}
+.incorrect{
+    font-size:26px;
+    color: red;
+    border-bottom: 1px black dotted;
 }
 
 .correctCount{
@@ -94,6 +133,7 @@ footer{
   border-radius: 2px;
   height: 40px;
   width: 90px;
+  cursor: pointer;
 }
 
 .scoreScreen{

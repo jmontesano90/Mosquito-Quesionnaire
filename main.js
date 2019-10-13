@@ -73,8 +73,8 @@ function generateQuestionElement(item){
             <input type="radio" class="answers" id="2" name = "answerSelection" type="button">${item[1].answer}</button><br>
             <input type="radio" class="answers" id="3" name = "answerSelection" type="button">${item[2].answer}</button><br>
             <input type="radio" class="answers" id="4" name = "answerSelection" type="button">${item[3].answer}</button><br>
-            <input type="submit" value="submit" onclick="checkCorrect()">
         </form> 
+        <input type="submit" value="Submit" class="questionButton" onclick="checkCorrect()">
   `
 }
 function generateScoreScreen(){
@@ -86,7 +86,7 @@ function generateScoreScreen(){
 
 function generateExplanationScreen(){
   return `
-  <div class="rightOrWrong"></div>
+  <div class="rightOrWrong id="rightOrWrong"></div>
   <div class="explanation"></div>
   <button onclick="finalRender()" class ="continueButton" type="button">Continue:</button>
   `
@@ -98,9 +98,11 @@ function renderExplanationScreen(){
   $(".explanation").text(questions[questionCount][5].explanation);
   if (isTrue == true){
     $(".rightOrWrong").text("Correct! ");
+    $(".rightOrWrong").addClass("correct");
   }
   else {
     $(".rightOrWrong").text("Incorrect: ");
+    $(".rightOrWrong").addClass("incorrect");
   }
 }
 
