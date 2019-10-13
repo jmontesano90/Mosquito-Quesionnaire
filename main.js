@@ -27,7 +27,7 @@ const question3 = [
   {answer: "Ixodes Scapularis", isCorrect: true},
   {answer: "Toxorhynchites", isCorrect: false},
   {question: "Which of the following is NOT a mosquito?"},
-  {explanation: "All are mosquito species except Ixodes Scapularis, which is the Deer Tick, or Black Legged Tick."}
+  {explanation: "All are mosquito species except Ixodes Scapularis, which is the Deer Tick, or Black Legged Tick.  There are actually over 3,000 species of mosquitoes, with different life styles that need to be taken into account when treating for them."}
 ];
 
 const question4 = [
@@ -44,7 +44,7 @@ const question5 = [
   {answer: "500 feet", isCorrect: false},
   {answer: "1-2 miles", isCorrect: false},
   {answer: "Up to 30 miles", isCorrect: true},
-  {question: "What is a mosquitoes max range?"},
+  {question: "What is a mosquitoes max flight range?"},
   {explanation: "The range of a mosquito is highly dependent on the species, but many salt marsh mosquitoes can have a range of up to 30 miles.  Fresh water or container mosquitoes tend to be signifigantly smaller, at only several hundred feet."}
 ];
 
