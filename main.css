@@ -26,8 +26,8 @@ h1{
   font-size:22px;
   text-align: center;
   border-radius: 10px;
-  height: 40px;
-  width: 90px;
+  height: 60px;
+  width: 120px;
   cursor: pointer;
 }
 
@@ -46,6 +46,7 @@ h1{
 }
 
 .question-count{
+    font-size: 16px;
     margin-top: 5px;
     margin-right: 870px;
     margin-left: auto;
