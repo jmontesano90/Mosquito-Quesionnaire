@@ -20,7 +20,7 @@ h1{
 
 #js-start-quiz{
   position: relative;
-  top: 40%;
+  top: 100px;
   background-color: rgb(95, 245, 76);
   border: dotted, 2px, rgba(0, 0, 0, 0.301);
   font-size:22px;
